@@ -1,13 +1,11 @@
-# 代码贡献量分析的小脚本
-
-### 灵感:
+# Git Repo代码贡献量分析的小脚本
 
 
 ### 声明:
 此项目只用来分析项目**代码**贡献量, 而不是项目贡献量.
 
 ### Demo:
-![http://opetwnn9x.bkt.clouddn.com/git_contribution/Jietu20171022-210926.jpg](http://opetwnn9x.bkt.clouddn.com/git_contribution/Jietu20171022-210926.jpg)
+![loading](http://opetwnn9x.bkt.clouddn.com/git_contribution/Jietu20171022-210926.jpg)
 
 ###  Features:
 
