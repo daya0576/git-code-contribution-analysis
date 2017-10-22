@@ -29,7 +29,7 @@ python3 main.py
 1. 在`env.py `中配置项目的路径, (排序的列名, 需要合并的用户) 
 2. `python3 main.py`
 
----
+
 
 ### TODO
 
@@ -40,6 +40,9 @@ python3 main.py
 5. 程序的进度条
 6. 将配置(env.py)
 
+---
+(割)
+---
 
 # A Script for **Code Contribution** Analysis   
 
