@@ -6,5 +6,6 @@ AUTHOR_NAME_MAPPING = {
 
 }
 
+
 # CHOICES: commits, insertion, deletion, total
 ORDER_BY = 'commits'

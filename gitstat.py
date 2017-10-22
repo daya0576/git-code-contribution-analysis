@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import print_function, unicode_literals
 import re
-
 import pandas as pd
 
 from config.common import COL_TOTAL, COL_DELETION, COL_INSERTION, COL_COMMITS, ORDER_BY, COMMIT_FLAG
@@ -95,9 +95,9 @@ def pretty_print(df, df_total):
 def main():
     repo = Repo(path=REPO)
     author_d = {}
-    print('Analyzing ')
+    # print('Analyzing ')
     for author in get_authors(repo):
-        print(author, end=' ')
+        # print(author, end=' ')
         author_d.update(get_stat_by(author, repo))
 
     df = get_dataframe(author_d)
