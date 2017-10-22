@@ -98,7 +98,7 @@ def pretty_print(df, df_total):
 def main():
     repo_path = sys.argv[-1] if len(sys.argv) > 2 else REPO
     if not repo_path:
-        print('pytho3 main.py <REPO PATH>')
+        print('python3 main.py <REPO PATH>')
     repo = Repo(path=repo_path)
     author_d = {}
     # print('Analyzing ')
