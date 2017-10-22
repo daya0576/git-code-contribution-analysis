@@ -4,7 +4,7 @@ import re
 
 import pandas as pd
 
-from config.common import COL_TOTAL, COL_DELETION, COL_INSERTION, COL_COMMITS, ORDER_BY
+from config.common import COL_TOTAL, COL_DELETION, COL_INSERTION, COL_COMMITS, ORDER_BY, COMMIT_FLAG
 from config.util import safe_decode, execute
 from env import AUTHOR_NAME_MAPPING, REPO
 
@@ -31,20 +31,20 @@ def get_authors(repo):
 
 def get_stat_by(author, repo):
     """ sum of insertion/deletion/commits of author """
-    author_filter = '--author={}'.format(author)
+    author_filter = '--committer=^{} '.format(author)
 
-    command = ['git', 'log', '-1', author_filter, '--oneline', '--shortstat', '--pretty=']
+    command = ['git', 'log', author_filter, '--oneline', '--shortstat', '--pretty=%{}'.format(COMMIT_FLAG)]
     # print(' '.join(command))
     # command = 'git log --oneline --shortstat --pretty='.split()
     result = execute(command, repo=repo)
     result = safe_decode(result)
-    insertion = re.findall(r'(\d+) insertion', result)
+    insertion = re.findall(r'(\d+) insertions', result)
     deletion = re.findall(r'(\d+) deletions', result)
 
     insertion_sum, deletion_sum = sum([int(x) for x in insertion]), sum([int(x) for x in deletion])
 
     d = {
-        COL_COMMITS: len(insertion),
+        COL_COMMITS: result.count(COMMIT_FLAG),
         COL_INSERTION: insertion_sum,
         COL_DELETION: deletion_sum
     }
@@ -70,25 +70,38 @@ def after(df):
     total_changes = df_total[COL_INSERTION] + df_total[COL_DELETION]
 
     df[COL_TOTAL] = (df[COL_INSERTION] + df[COL_DELETION]) / total_changes
-    df[COL_TOTAL] = df[COL_TOTAL].map('{:.0%}'.format)
+    df[COL_TOTAL] = df[COL_TOTAL].map('{:.2%}'.format)
 
+    # Sort
     df = df.sort_values(ORDER_BY, ascending=0)
 
-    df = df.set_index('index')
-    df.index.name = None
+    # df = df.set_index('index')
 
     return df, df_total
+
+
+def pretty_print(df, df_total):
+    # TODO: pretty print && export to other format
+    # Add the row of total to the end
+    df = df.append(df_total, ignore_index=True)
+    df['index'].fillna('TOTAL', inplace=True)
+
+    df.set_index('index', inplace=True)
+    df.index.name = None
+
+    print('\n\n{}'.format(df))
 
 
 def main():
     repo = Repo(path=REPO)
     author_d = {}
+    print('Analyzing ')
     for author in get_authors(repo):
+        print(author, end=' ')
         author_d.update(get_stat_by(author, repo))
 
     df = get_dataframe(author_d)
     df, df_total = after(df)
 
-    print(df)
+    pretty_print(df, df_total)
 
-    return df

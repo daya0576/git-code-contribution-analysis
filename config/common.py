@@ -14,3 +14,5 @@ order_d = dict(
     total=COL_TOTAL
 )
 ORDER_BY = order_d.get(_ORDER_BY, COL_COMMITS)
+
+COMMIT_FLAG = '%%'
