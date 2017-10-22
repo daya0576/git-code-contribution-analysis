@@ -1,7 +1,15 @@
 # Git Repo代码贡献量分析脚本
 
-### 声明
-此脚本只是用来分析项目**代码**贡献量, 而不是项目真实贡献量.  
+### 说明 
+代码贡献量 != 项目贡献量
+但能不能从无意义的但真实数据中, 去**挖掘**一些有趣有用的信息, 比如:   
+
+- insertion/deletion   
+- 某个人写的代码被删的概率.   
+- 被修改频率最高的文件   
+- 等等   
+
+如果你想到好的指标或算法, 请直接留言issue, 谢谢!
 
 ---
 
@@ -26,8 +34,9 @@
 git clone git@github.com:daya0576/git-code-contribution-analysis.git; cd git-code-contribution-analysis
 pip3 install -r requirements.txt 
 ```
-- **配置:**   
-可选: 在`env.py`中配置选项, e.g. 排序的列, 合并重复的author
+- **配置:**(可选)   
+在`env.py`中配置选项, e.g. 排序的列, 合并重复的author, ..
+- **运行:**
 ```
 python3 main.py <REPO PATH>
 ```
