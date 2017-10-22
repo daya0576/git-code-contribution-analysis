@@ -1,5 +1,8 @@
 # 代码贡献量分析的小脚本
 
+### 灵感:
+
+
 ### 声明:
 此项目只用来分析项目**代码**贡献量, 而不是项目贡献量.
 
@@ -8,28 +11,23 @@
 
 ###  Features:
 
-1. 快 (2500个commits的项目用时, 和gitinspector相比快了20倍.) 
+1. 快 (2500个commits的项目用时, 用时1.1s, 和gitinspector相比快了20倍.) 
 2. 统计一个用户所有的commits, insertion, deletion, 改动总比重.
 3. 合并多个用户(不同用户名)到一个用户名.
 4. 支持按列排序.
 
+###  Installation 
 
-###  Installation
+1. **安装python依赖:**   
 ```
 git clone git@github.com:daya0576/git-code-contribution-analysis.git; cd git-code-contribution-analysis
 pip3 install -r requirements.txt 
 ```
+2. **配置:**   
 在`env.py`中配置 待分析的git项目路径
 ```
 python3 main.py
 ```
-
-###  Usage
-
-1. 在`env.py `中配置项目的路径, (排序的列名, 需要合并的用户) 
-2. `python3 main.py`
-
-
 
 ### TODO
 
