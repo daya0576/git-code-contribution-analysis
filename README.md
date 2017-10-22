@@ -8,7 +8,7 @@
 ---
 
 ### Demo:
-![http://opetwnn9x.bkt.clouddn.com/git_contribution/Jietu20171022-210926.jpg](http://opetwnn9x.bkt.clouddn.com/git_contribution/Jietu20171022-210926.jpg)
+![](http://opetwnn9x.bkt.clouddn.com/git_contribution/Jietu20171022-210926.jpg)
 
 ---
 
