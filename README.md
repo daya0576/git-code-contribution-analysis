@@ -27,9 +27,9 @@ git clone git@github.com:daya0576/git-code-contribution-analysis.git; cd git-cod
 pip3 install -r requirements.txt 
 ```
 - **配置:**   
-在`env.py`中配置 待分析的git项目路径
+可选: 在`env.py`中配置选项, e.g. 排序的列, 合并重复的author
 ```
-python3 main.py
+python3 main.py <REPO PATH>
 ```
 
 ---
