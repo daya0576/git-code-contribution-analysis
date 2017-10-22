@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import print_function, unicode_literals
+
+import getopt
 import re
 import pandas as pd
+import sys
 
 from config.common import COL_TOTAL, COL_DELETION, COL_INSERTION, COL_COMMITS, ORDER_BY, COMMIT_FLAG
 from config.util import safe_decode, execute
@@ -93,7 +96,10 @@ def pretty_print(df, df_total):
 
 
 def main():
-    repo = Repo(path=REPO)
+    repo_path = sys.argv[-1] if len(sys.argv) > 2 else REPO
+    if not repo_path:
+        print('pytho3 main.py <REPO PATH>')
+    repo = Repo(path=repo_path)
     author_d = {}
     # print('Analyzing ')
     for author in get_authors(repo):
